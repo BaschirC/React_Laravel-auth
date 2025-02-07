@@ -1,0 +1,808 @@
+name: 'Restaurant resource'
+description: |-
+
+  APIs to manage the restaurants
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/currencies
+    metadata:
+      groupName: 'Restaurant resource'
+      groupDescription: |-
+
+        APIs to manage the restaurants
+      subgroup: Currency
+      subgroupDescription: 'Manage your restaurant currencies here.'
+      title: 'Get all currencies'
+      description: 'This endpoint retrieves a list of all currencies.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      with:
+        name: with
+        description: |-
+          The relations to include in the response.
+            Accepts comma-separated values.
+
+           
+
+            <span>Example</span>: productVariations,offers
+
+            Possibilities:
+            - productVariations
+            - offers
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      paginate:
+        name: paginate
+        description: |-
+          Returns the specified number of items per page.
+          </br>
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      page:
+        name: page
+        description: |-
+          Returns the page specified in the query param.
+          </br>
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanQueryParameters:
+      paginate: 10
+      page: 2
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/currencies/create
+    metadata:
+      groupName: 'Restaurant resource'
+      groupDescription: |-
+
+        APIs to manage the restaurants
+      subgroup: Currency
+      subgroupDescription: 'Manage your restaurant currencies here.'
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/currencies
+    metadata:
+      groupName: 'Restaurant resource'
+      groupDescription: |-
+
+        APIs to manage the restaurants
+      subgroup: Currency
+      subgroupDescription: 'Manage your restaurant currencies here.'
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/currencies/{id}'
+    metadata:
+      groupName: 'Restaurant resource'
+      groupDescription: |-
+
+        APIs to manage the restaurants
+      subgroup: Currency
+      subgroupDescription: 'Manage your restaurant currencies here.'
+      title: 'Get once currency'
+      description: 'This endpoint retrieves one currency by id.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the currency.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters:
+      with:
+        name: with
+        description: |-
+          The relations to include in the response.
+            Accepts comma-separated values.
+
+           
+
+            <span>Example</span>: productVariations,offers
+
+            Possibilities:
+            - productVariations
+            - offers
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      paginate:
+        name: paginate
+        description: |-
+          Returns the specified number of items per page.
+          </br>
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      page:
+        name: page
+        description: |-
+          Returns the page specified in the query param.
+          </br>
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanQueryParameters:
+      paginate: 10
+      page: 2
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/restaurants
+    metadata:
+      groupName: 'Restaurant resource'
+      groupDescription: |-
+
+        APIs to manage the restaurants
+      subgroup: Restaurant
+      subgroupDescription: 'Manage your restaurants here.'
+      title: 'Get all restaurants'
+      description: 'This endpoint retrieves a list of all restaurants.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      with:
+        name: with
+        description: |-
+          The relations to include in the response.
+            Accepts comma-separated values.
+
+           
+
+            <span>Example</span>: branches,users
+
+            Possibilities:
+            - branches
+            - users
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      paginate:
+        name: paginate
+        description: |-
+          Returns the specified number of items per page.
+          </br>
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      page:
+        name: page
+        description: |-
+          Returns the page specified in the query param.
+          </br>
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanQueryParameters:
+      paginate: 10
+      page: 2
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/restaurants/create
+    metadata:
+      groupName: 'Restaurant resource'
+      groupDescription: |-
+
+        APIs to manage the restaurants
+      subgroup: Restaurant
+      subgroupDescription: 'Manage your restaurants here.'
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/restaurants
+    metadata:
+      groupName: 'Restaurant resource'
+      groupDescription: |-
+
+        APIs to manage the restaurants
+      subgroup: Restaurant
+      subgroupDescription: 'Manage your restaurants here.'
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/restaurants/{id}'
+    metadata:
+      groupName: 'Restaurant resource'
+      groupDescription: |-
+
+        APIs to manage the restaurants
+      subgroup: Restaurant
+      subgroupDescription: 'Manage your restaurants here.'
+      title: 'Get one restaurant'
+      description: 'This endpoint retrieves one restaurant by id.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the restaurant.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters:
+      with:
+        name: with
+        description: |-
+          The relations to include in the response.
+            Accepts comma-separated values.
+
+           
+
+            <span>Example</span>: branches,users
+
+            Possibilities:
+            - branches
+            - users
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      paginate:
+        name: paginate
+        description: |-
+          Returns the specified number of items per page.
+          </br>
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      page:
+        name: page
+        description: |-
+          Returns the page specified in the query param.
+          </br>
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanQueryParameters:
+      paginate: 10
+      page: 2
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/branches
+    metadata:
+      groupName: 'Restaurant resource'
+      groupDescription: |-
+
+        APIs to manage the restaurants
+      subgroup: Branch
+      subgroupDescription: 'Manage your restaurant branches here.'
+      title: 'Get all branches'
+      description: 'This endpoint retrieves a list of all branches.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      with:
+        name: with
+        description: |-
+          The relations to include in the response.
+            Accepts comma-separated values.
+
+           
+
+            <span>Example</span>: restaurant,menus,products
+
+            Possibilities:
+            - restaurant
+            - menus
+            - products
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      paginate:
+        name: paginate
+        description: |-
+          Returns the specified number of items per page.
+          </br>
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      page:
+        name: page
+        description: |-
+          Returns the page specified in the query param.
+          </br>
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanQueryParameters:
+      paginate: 10
+      page: 2
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/branches/create
+    metadata:
+      groupName: 'Restaurant resource'
+      groupDescription: |-
+
+        APIs to manage the restaurants
+      subgroup: Branch
+      subgroupDescription: 'Manage your restaurant branches here.'
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/branches
+    metadata:
+      groupName: 'Restaurant resource'
+      groupDescription: |-
+
+        APIs to manage the restaurants
+      subgroup: Branch
+      subgroupDescription: 'Manage your restaurant branches here.'
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/branches/{id}'
+    metadata:
+      groupName: 'Restaurant resource'
+      groupDescription: |-
+
+        APIs to manage the restaurants
+      subgroup: Branch
+      subgroupDescription: 'Manage your restaurant branches here.'
+      title: 'Get one branch'
+      description: 'This endpoint retrieves a specified branch.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the branch.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters:
+      with:
+        name: with
+        description: |-
+          The relations to include in the response.
+            Accepts comma-separated values.
+
+           
+
+            <span>Example</span>: restaurant,menus,products
+
+            Possibilities:
+            - restaurant
+            - menus
+            - products
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      paginate:
+        name: paginate
+        description: |-
+          Returns the specified number of items per page.
+          </br>
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      page:
+        name: page
+        description: |-
+          Returns the page specified in the query param.
+          </br>
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanQueryParameters:
+      paginate: 10
+      page: 2
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []

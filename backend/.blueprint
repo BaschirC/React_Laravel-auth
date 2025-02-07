@@ -1,0 +1,28 @@
+created:
+    - app/Http/Controllers/PublicHolidayController.php
+    - database/factories/PublicHolidayFactory.php
+    - database/migrations/2024_12_12_105801_create_public_holidays_table.php
+    - app/Models/PublicHoliday.php
+    - tests/Feature/Http/Controllers/PublicHolidayControllerTest.php
+    - resources/views/publicHoliday/create.blade.php
+updated:
+    - routes/web.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string nullable' }
+    Restaurant: { id: id, name: 'string:255', description: text, telephone: 'string:20', email: 'string:255', url: 'string:255', cuisine_type: 'string:255', timestamps: timestamps, relationships: { hasMany: 'Branch, User' } }
+    Branch: { id: id, restaurant_id: 'id foreign:restaurants', name: 'string:255', street_address: 'string:255', locality: 'string:255', region: 'string:255', postal_code: 'string:10', country: 'string:255', telephone: 'string:20', timestamps: timestamps, relationships: { belongsTo: Restaurant, hasMany: 'Menu, Product' } }
+    Menu: { id: id, branch_id: 'id foreign:branches', name: 'string:255', description: text, timestamps: timestamps, relationships: { belongsTo: Branch, hasMany: ProductCategory } }
+    ProductCategory: { id: id, menu_id: 'id foreign:menus', name: 'string:255', description: text, image_url: 'string:255', sort_order: integer, timestamps: timestamps, relationships: { belongsTo: Menu, belongsToMany: Product } }
+    Product: { id: id, branch_id: 'id foreign:branches', category_id: 'id foreign:product_categories nullable', recipe_id: 'id foreign:recipes', name: 'string:255', description: text, image_url: 'string:255', timestamps: timestamps, relationships: { belongsTo: 'Branch, ProductCategory', belongsToMany: Recipe, hasMany: 'ProductVariation, ProductAddon' } }
+    Recipe: { id: id, name: 'string:255', yield_quantity: 'decimal:10,2', number_of_portions: integer, prep_time: 'string:50', cook_time: 'string:50', total_time: 'string:50', category: 'string:255', cuisine_type: 'string:255', instructions: text, image_url: 'string:255', timestamps: timestamps, relationships: { belongsToMany: Product, hasMany: RecipeIngredient } }
+    Ingredient: { id: id, name: 'string:255', description: text, image_url: 'string:255', unit_of_measure: 'string:50', calories_content: integer, fat_content: 'decimal:5,2', saturated_fat_content: 'decimal:5,2', carbohydrate_content: 'decimal:5,2', sugar_content: 'decimal:5,2', fiber_content: 'decimal:5,2', protein_content: 'decimal:5,2', sodium_content: 'decimal:5,2', timestamps: timestamps, relationships: { hasMany: RecipeIngredient } }
+    RecipeIngredient: { id: id, recipe_id: 'id foreign:recipes', ingredient_id: 'id foreign:ingredients nullable', compound_recipe_id: 'id foreign:recipes nullable', quantity: 'decimal:10,2', timestamps: timestamps, relationships: { belongsTo: 'Recipe, Ingredient, Recipe' } }
+    ProductAddon: { id: id, product_id: 'id foreign:products', addon_product_id: 'id foreign:products', timestamps: timestamps, relationships: { belongsTo: Product } }
+    ProductVariation: { id: id, product_id: 'id foreign:products', recipe_id: 'id foreign:recipes', name: 'string:255', price: 'decimal:10,2', currency_id: 'id foreign:currencies', stock_quantity: integer, weight: 'string:50', timestamps: timestamps, relationships: { belongsTo: 'Product, Recipe, Currency', hasMany: Offer } }
+    Offer: { id: id, product_variation_id: 'id foreign:product_variations', sales_channel_id: 'id foreign:sales_channels', offer_type_id: 'id foreign:offer_types', currency_id: 'id foreign:currencies', price: 'decimal:10,2', timestamps: timestamps, relationships: { belongsTo: 'ProductVariation, SalesChannel, OfferType, Currency' } }
+    OfferType: { id: id, name: 'string:255', description: text, start_time: time, end_time: time, timestamps: timestamps, relationships: { hasMany: Offer } }
+    SalesChannel: { id: id, name: 'string:255', description: text, timestamps: timestamps, relationships: { hasMany: Offer } }
+    Currency: { id: id, code: 'string:3', symbol: 'string:10', name: 'string:50', timestamps: timestamps, relationships: { hasMany: 'ProductVariation, Offer' } }
+    Employee: { start_date: dateTime, end_date: dateTime, contract_type: 'string:50', vacation_days_per_year: integer, salary: integer, relationships: { belongsTo: 'User, Currency' } }
+    EmployeeVacation: { requested_by: 'id foreign:employee', vacation_type: 'string:50', start_date: dateTime, end_date: dateTime, requested_at: datetime, approved_at: datetime, status: 'string:50', approved_by: 'id foreign:employee' }
+    PublicHoliday: { restaurant_id: 'id foreign:restaurant', created_by: 'id foreign:employee', name: 'string:50', is_public: boolean, start_date: dateTime, end_date: dateTime }

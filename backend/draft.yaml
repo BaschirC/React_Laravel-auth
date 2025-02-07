@@ -1,0 +1,17 @@
+models:
+  PublicHoliday:
+    restaurant_id: id foreign:restaurant
+    created_by: id foreign:employee
+    name: string:50
+    is_public: boolean
+    start_date: dateTime
+    end_date: dateTime
+
+controllers:
+  PublicHoliday:
+    index:
+      query: all
+    create:
+      render: publicHoliday.create
+    store:
+      save: publicHoliday

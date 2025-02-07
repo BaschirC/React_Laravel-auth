@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "1999b510-0474-4669-9596-355e24677631",
+		"name": "Restaurant Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "20101244"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"sebastian.v.pavel@gmail.com\",\n    \"name\": \"Sebastian Pavel\",\n    \"password\": \"Password123..\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/api/auth/register",
+				"description": "Register a give user, it requires:\n\n- email\n    \n- name\n    \n- password"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const res = pm.response.json();",
+							"console.log(res, 'the respons')",
+							"",
+							"pm.collectionVariables.set(\"TOKEN\", res.token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"developer@ugs.ro\",\n    \"password\": \"Password123..\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/api/auth/login",
+				"description": "Login api\n\nRequires:\n\n- email address\n    \n- password\n    \n\nAutomatically sets a token used by the entire collection to ensure that all the routes are protected and cannot be accessed without auth token."
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "{{base_url}}/api/auth/logout"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Restaurant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Ciorbarie\",\n    \"description\": \"Cupidatat labore esse excepteur amet. Reprehenderit do et ipsum. Labore do nostrud laboris est dolore excepteur in excepteur. Laboris tempor ea id sit cillum ullamco labore esse voluptate deserunt. Enim veniam commodo proident voluptate velit minim nulla nostrud est. Dolore deserunt do aliqua nisi cupidatat tempor laborum aliquip officia excepteur deserunt exercitation deserunt adipisicing Lorem. Ipsum dolore esse ullamco. Ullamco fugiat magna duis laboris esse quis dolore aliquip excepteur adipisicing officia pariatur.\",\n    \"address\": \"Iasi, Str Palat, etc...\",\n    \"city\": \"Iasi\",\n    \"state\": \"Iasi\",\n    \"postal_code\": \"asdasdas\",\n    \"country\": \"Romania\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/api/restaurants",
+				"description": "Create restaurant api. requires all fields from the current body."
+			},
+			"response": []
+		},
+		{
+			"name": "get user",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "{{base_url}}/api/user",
+				"description": "Gets the current logged in user.\n\nUsed to test authentication."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all restaurants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/api/v1/restaurants",
+				"description": "It returns all the restaurants and the relations pased in the query as it follows:\n\n- ?with=branches - returns the restaurant and its branches.\n    \n- ?with=branches.products - returns restaurant with branches and branch relations\n    \n- ?paginate=1, where 1 represents how many entries per page.\n    \n- ?page=1, where 1 represents the page number.\n    \n\nPaginate and page works together and the backend takes care of everything."
+			},
+			"response": []
+		},
+		{
+			"name": "Get one restaurant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/api/v1/restaurants/1",
+				"description": "It returns one restaurant and the relations pased in the query as it follows:\n\n- ?with=branches - returns the restaurant and its branches.\n    \n- ?with=branches.products - returns restaurant with branches and branch relations\n    \n- ?paginate=1, where 1 represents how many entries per page.\n    \n- ?page=1, where 1 represents the page number.\n    \n\nPaginate and page works together and the backend takes care of everything."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all recipes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/recipes?with=recipeIngredients.ingredient&paginate=1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"recipes"
+					],
+					"query": [
+						{
+							"key": "with",
+							"value": "recipeIngredients.ingredient"
+						},
+						{
+							"key": "paginate",
+							"value": "1"
+						}
+					]
+				},
+				"description": "It returns all the recipes and the relations pased in the query as it follows:\n\n- ?compound=1|0 - returns recipes compound or not.\n    \n- ?orphans=1|0 - returns recipes which are|are not used in any recipe(automatically returns the compound recipes).\n    \n- ?with=products.productAddons,recipeIngredients,ingredients - this will return all releations of the recipe.\n    \n- ?paginate=1, where 1 represents how many entries per page.\n    \n- ?page=1, where 1 represents the page number.\n    \n\nPaginate and page works together and the backend takes care of everything."
+			},
+			"response": []
+		},
+		{
+			"name": "Get one recipe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/api/v1/recipes/1",
+				"description": "It returns one recipe and the relations pased in the query as it follows:\n\n- ?compound=1|0 - returns recipes compound or not.\n    \n- ?orphans=1|0 - returns recipes which are|are not used in any recipe(automatically returns the compound recipes).\n    \n- ?with=products.productAddons,recipeIngredients,ingredients - this will return all releations of the recipe.\n    \n- ?paginate=1, where 1 represents how many entries per page.\n    \n- ?page=1, where 1 represents the page number.\n    \n\nPaginate and page works together and the backend takes care of everything."
+			},
+			"response": []
+		},
+		{
+			"name": "get all menus",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/menus?with=productCategories&paginate=1&page=3",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"menus"
+					],
+					"query": [
+						{
+							"key": "with",
+							"value": "productCategories"
+						},
+						{
+							"key": "paginate",
+							"value": "1"
+						},
+						{
+							"key": "page",
+							"value": "3"
+						}
+					]
+				},
+				"description": "It returns all the menus and the relations pased in the query as it follows:\n\n- ?with=branch,productCategories\n    \n- ?paginate=1, where 1 represents how many entries per page.\n    \n- ?page=1, where 1 represents the page number.\n    \n\nPaginate and page works together and the backend takes care of everything."
+			},
+			"response": []
+		},
+		{
+			"name": "Get one menu",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/menus/1?with=productCategories&paginate=1&page=3",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"menus",
+						"1"
+					],
+					"query": [
+						{
+							"key": "with",
+							"value": "productCategories"
+						},
+						{
+							"key": "paginate",
+							"value": "1"
+						},
+						{
+							"key": "page",
+							"value": "3"
+						}
+					]
+				},
+				"description": "It returns one menu and the relations pased in the query as it follows:\n\n- ?with=branch,productCategories\n    \n- ?paginate=1, where 1 represents how many entries per page.\n    \n- ?page=1, where 1 represents the page number.\n    \n\nPaginate and page works together and the backend takes care of everything."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all ingredients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/api/v1/ingredients",
+				"description": "Returns all the ingredients based on the query params\n\n- ?with=recipeIngredients.ingredient,ingredients\n    \n- ?orphans=1|0 - returns the ingredient used or not in a recipe.\n    \n- ?paginate=1, where 1 represents how many entries per page.\n    \n- ?page=1, where 1 represents the page number."
+			},
+			"response": []
+		},
+		{
+			"name": "Get one ingredient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/api/v1/ingredients/1",
+				"description": "Returns one ingredient based on the query params\n\n- ?with=recipeIngredients.ingredient,ingredients\n    \n- ?orphans=1|0 - returns the ingredient used or not in a recipe.\n    \n- ?paginate=1, where 1 represents how many entries per page.\n    \n- ?page=1, where 1 represents the page number."
+			},
+			"response": []
+		},
+		{
+			"name": "Get one product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/api/v1/products/1",
+				"description": "Returns all the ingredients based on the query params\n\n- ?with=productCategory,branch,recipes,productVariations,ProductAddons\n    \n- ?paginate=1, where 1 represents how many entries per page.\n    \n- ?page=1, where 1 represents the page number."
+			},
+			"response": []
+		},
+		{
+			"name": "Get one product category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/api/v1/product-categories/1",
+				"description": "Returns all the ingredients based on the query params\n\n- ?with=products,menu\n    \n- ?paginate=1, where 1 represents how many entries per page.\n    \n- ?page=1, where 1 represents the page number."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{TOKEN}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "TOKEN",
+			"value": ""
+		}
+	]
+}

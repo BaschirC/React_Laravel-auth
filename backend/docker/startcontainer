@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# Create a .composer directory if it does not exist
+if [ ! -d /.composer ]; then
+    mkdir /.composer
+fi
+
+# Run Laravel migration, install dependencies, build assets
+composer install --no-interaction --prefer-dist --optimize-autoloader
+
+npm install
+npm run build
+
+# Set permissions for .composer
+chmod -R ugo+rw /.composer
+
+# Update the supervisor configuration with the correct port if specified
+if [ ! -z "$PORT" ]; then
+    sed -i -e "s/--port=8080/--port=$PORT/g" /etc/supervisor/conf.d/supervisord.conf
+fi
+
+php artisan key:generate
+
+# Run Laravel migration, in case it's needed for initial setup
+php artisan migrate --force --seed
+
+php artisan storage:link
+
+php artisan permissions:sync
+
+# php artisan scribe:generate
+
+# Start supervisord or the specified command
+if [ $# -gt 0 ]; then
+    exec "$@"
+else
+    /usr/bin/supervisord
+fi

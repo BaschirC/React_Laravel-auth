@@ -1,0 +1,490 @@
+name: 'Ingredient management'
+description: |-
+
+  APIs for managing ingredients
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/ingredients
+    metadata:
+      groupName: 'Ingredient management'
+      groupDescription: |-
+
+        APIs for managing ingredients
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get all ingredients'
+      description: |-
+        This endpoint retrieves a list of all ingredients. It supports filtering for orphaned ingredients
+        and including related data.
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      with:
+        name: with
+        description: |-
+          The relations to include in the response.
+            Accepts comma-separated values.
+
+           
+
+            <span>Example</span>: recipeIngredients,ingredients
+
+            Possibilities:
+            - recipeIngredients (can include recipeIngredients relations: ingredient)
+            - ingredients (can include ingredients relations, check ingredients refference)
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      orphans:
+        name: orphans
+        description: |-
+          1|0 Filter ingredients based on their association with recipes.
+            
+
+            - If true, returns only ingredients not associated with any recipes.
+            - If false, returns only ingredients associated with at least one recipe.
+        required: false
+        example: null
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      paginate:
+        name: paginate
+        description: |-
+          Returns the specified number of items per page.
+          </br>
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      page:
+        name: page
+        description: |-
+          Returns the page specified in the query param.
+          </br>
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanQueryParameters:
+      paginate: 10
+      page: 2
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/ingredients
+    metadata:
+      groupName: 'Ingredient management'
+      groupDescription: |-
+
+        APIs for managing ingredients
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/ingredients/{id}'
+    metadata:
+      groupName: 'Ingredient management'
+      groupDescription: |-
+
+        APIs for managing ingredients
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get one ingredient'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the ingredient.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters:
+      with:
+        name: with
+        description: |-
+          The relations to include in the response.
+            Accepts comma-separated values.
+
+           
+
+            <span>Example</span>: recipeIngredients,ingredients
+
+            Possibilities:
+            - recipeIngredients (can include recipeIngredients relations: ingredient)
+            - ingredients (can include ingredients relations, check ingredients refference)
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      orphans:
+        name: orphans
+        description: |-
+          1|0 Filter ingredients based on their association with recipes.
+            
+
+            - If true, returns only ingredients not associated with any recipes.
+            - If false, returns only ingredients associated with at least one recipe.
+        required: false
+        example: null
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      paginate:
+        name: paginate
+        description: |-
+          Returns the specified number of items per page.
+          </br>
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      page:
+        name: page
+        description: |-
+          Returns the page specified in the query param.
+          </br>
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanQueryParameters:
+      paginate: 10
+      page: 2
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/v1/ingredients/{id}'
+    metadata:
+      groupName: 'Ingredient management'
+      groupDescription: |-
+
+        APIs for managing ingredients
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update one ingredient'
+      description: |-
+        This endpoint updates one ingredient by id. The request body should contain the fields that
+        should be updated. The request body supports the following fields:
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the ingredient.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: |-
+          The name of the ingredient. An object containing the names for
+          each of the supported locales. The supported locales are defined in the `app.locales` config
+          option.
+        required: true
+        example:
+          en: Apple
+          ro: Mere
+        type: object
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      description:
+        name: description
+        description: |-
+          The description of the ingredient. An object containing the names for
+           each of the supported locales. The supported locales are defined in the `app.locales` config
+           option.
+        required: true
+        example:
+          en: 'English description'
+          ro: 'Descriere in romana'
+        type: object
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      unit_of_measure:
+        name: unit_of_measure
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: omggwxdngnjspmrc
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      calories_content:
+        name: calories_content
+        description: ''
+        required: true
+        example: 11
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      fat_content:
+        name: fat_content
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: hhybrjipqryjocpespnfispx
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      saturated_fat_content:
+        name: saturated_fat_content
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: fposdjdmfuuqjrjepcyam
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      carbohydrate_content:
+        name: carbohydrate_content
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: sl
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      sugar_content:
+        name: sugar_content
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: jewiuedrmyx
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      fiber_content:
+        name: fiber_content
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: dyqynrgxbsbxs
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      protein_content:
+        name: protein_content
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: kfdmnefvhgilgqzslv
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      sodium_content:
+        name: sodium_content
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: pdkzlpieore
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      unit_id:
+        name: unit_id
+        description: 'The unit id of the ingredient.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      stock:
+        name: stock
+        description: 'The current stock of the ingredient.'
+        required: false
+        example: 1.5
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      price:
+        name: price
+        description: 'The price of the ingredient.'
+        required: false
+        example: 1.5
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      order_unit_id:
+        name: order_unit_id
+        description: 'The unit id of the ingredient when ordered.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      order_stock:
+        name: order_stock
+        description: 'The current stock of the ingredient when ordered.'
+        required: false
+        example: 1.5
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      order_price:
+        name: order_price
+        description: 'The price of the ingredient when ordered.'
+        required: false
+        example: 1.5
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanBodyParameters:
+      name:
+        en: Apple
+        ro: Mere
+      description:
+        en: 'English description'
+        ro: 'Descriere in romana'
+      unit_of_measure: omggwxdngnjspmrc
+      calories_content: 11
+      fat_content: hhybrjipqryjocpespnfispx
+      saturated_fat_content: fposdjdmfuuqjrjepcyam
+      carbohydrate_content: sl
+      sugar_content: jewiuedrmyx
+      fiber_content: dyqynrgxbsbxs
+      protein_content: kfdmnefvhgilgqzslv
+      sodium_content: pdkzlpieore
+      unit_id: 1
+      stock: 1.5
+      price: 1.5
+      order_unit_id: 1
+      order_stock: 1.5
+      order_price: 1.5
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|bSUhEQIhfBLUqHXFhQq9P2f2FdnKFKWptVSoEhVBfe0d5ef3'
+    controller: null
+    method: null
+    route: null
+    custom: []
